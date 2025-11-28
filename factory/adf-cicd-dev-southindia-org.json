@@ -1,0 +1,9 @@
+{
+	"name": "adf-cicd-dev-southindia-org",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "188c4277-fc7e-4af1-a6e6-41149fae1862",
+		"tenantId": "32068259-58c0-45ec-9287-019ec7c3425c"
+	}
+}
