@@ -1,0 +1,9 @@
+{
+	"name": "adf-orders-southindia-org",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5fe521b0-25cc-410f-b15b-19380a43b52a",
+		"tenantId": "32068259-58c0-45ec-9287-019ec7c3425c"
+	}
+}
