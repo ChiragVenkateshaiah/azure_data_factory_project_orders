@@ -1,0 +1,19 @@
+{
+	"name": "ds_raw_customers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dl_orders",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "customers.json",
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {}
+	}
+}
