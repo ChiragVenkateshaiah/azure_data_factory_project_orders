@@ -5,6 +5,9 @@
 			"referenceName": "ls_dl_orders",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "02_raw"
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {

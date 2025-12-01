@@ -39,7 +39,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_customer_landing",
+						"referenceName": "ds_landing_customers",
 						"type": "DatasetReference"
 					}
 				],

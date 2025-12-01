@@ -5,6 +5,9 @@
 			"referenceName": "ls_st_orders",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "01_landing"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
