@@ -1,9 +1,9 @@
 {
-	"name": "pl_orders_raw_to_cleansed",
+	"name": "pl_orders_structured_analytics",
 	"properties": {
 		"activities": [
 			{
-				"name": "RawToCleansed",
+				"name": "StructuredToAnalytics",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_orders_raw_to_cleansed",
+						"referenceName": "df_orders_structured_to_analytics",
 						"type": "DataFlowReference"
 					},
 					"compute": {
