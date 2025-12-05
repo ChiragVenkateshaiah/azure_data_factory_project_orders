@@ -11,4 +11,5 @@ Stage 2:
 - I am thinking of creating the Stage 3 to solve the duplication problem using UPSERT.
 
 Stage 3:
-- Using SQL for the source and sink Copy Activity and Dataflows
+- Using SQL for the sink Copy Activity and Dataflows
+- We can use the SQL database quick editor to query the tables saved in sink
