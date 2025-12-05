@@ -9,3 +9,6 @@ Stage 2:
 - In stage 2, I have implement folder generation using @concat('customers/', formatDateTime(utcNow(), 'yyyy-MM-dd')) using dynamic content
 - The above is not the optimized solution or the complete solution so to analyse, in the above solution we get a duplicate date content and it is a bit complex approach for me to go with solving the duplicate data copy in the Stage 2 solution.
 - I am thinking of creating the Stage 3 to solve the duplication problem using UPSERT.
+
+Stage 3:
+- Using SQL for the source and sink Copy Activity and Dataflows
