@@ -14,6 +14,10 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "orders.parquet",
+				"folderPath": {
+					"value": "@formatDateTime(utcNow(), 'yyyy-MM-dd')",
+					"type": "Expression"
+				},
 				"fileSystem": "raw"
 			},
 			"compressionCodec": "snappy"

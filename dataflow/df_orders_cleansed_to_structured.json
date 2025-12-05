@@ -64,7 +64,7 @@
 					"name": "DropDuplicatedColumns"
 				},
 				{
-					"name": "SubtotalAndUpdatedTimestampsOrders"
+					"name": "IdAndSubtotalAndUpdatedTimestampsOrders"
 				},
 				{
 					"name": "RearrangedColumnsOrders"
@@ -139,9 +139,11 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> DropDuplicatedColumns",
-				"DropDuplicatedColumns derive(SUB_TOTAL = UNIT_PRICE*QUANTITY,",
-				"          UPDATED_TIMESTAMP = currentUTC()) ~> SubtotalAndUpdatedTimestampsOrders",
-				"SubtotalAndUpdatedTimestampsOrders select(mapColumn(",
+				"DropDuplicatedColumns derive(ORDER_ITEM_ID = toInteger(concat(toString(ORDER_ID), toString(PRODUCT_ID))),",
+				"          SUB_TOTAL = UNIT_PRICE*QUANTITY,",
+				"          UPDATED_TIMESTAMP = currentUTC()) ~> IdAndSubtotalAndUpdatedTimestampsOrders",
+				"IdAndSubtotalAndUpdatedTimestampsOrders select(mapColumn(",
+				"          ORDER_ITEM_ID,",
 				"          ORDER_ID,",
 				"          ORDER_DATE,",
 				"          CUSTOMER_ID,",
@@ -176,7 +178,11 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> OrdersStructured",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('key',",
+				"          0,",
+				"          ORDER_DATE",
+				"     )) ~> OrdersStructured",
 				"UpdatedTimestampProduct sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -186,11 +192,13 @@
 				"          UPDATED_TIMESTAMP as timestamp",
 				"     ),",
 				"     format: 'parquet',",
+				"     partitionFileNames:['products.parquet'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ProductStructured",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> ProductStructured",
 				"UpdatedTimestampStores sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -201,11 +209,13 @@
 				"          UPDATED_TIMESTAMP as timestamp",
 				"     ),",
 				"     format: 'parquet',",
+				"     partitionFileNames:['stores.parquet'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> storesStructured"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> storesStructured"
 			]
 		}
 	}

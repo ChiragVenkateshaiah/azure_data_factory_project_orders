@@ -63,29 +63,6 @@
 					},
 					"waitOnCompletion": true
 				}
-			},
-			{
-				"name": "StructuredToAnalytics",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "CleansedToStructured",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "pl_orders_structured_analytics",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
 			}
 		],
 		"annotations": []
